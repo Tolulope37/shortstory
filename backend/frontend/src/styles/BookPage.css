@@ -1,0 +1,178 @@
+.shared-booking-container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 2rem;
+}
+
+.shared-booking-header {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.back-button {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: none;
+  border: none;
+  color: #555;
+  font-size: 1rem;
+  cursor: pointer;
+  padding: 0.5rem;
+  border-radius: 4px;
+  margin-right: 1rem;
+}
+
+.back-button:hover {
+  background-color: #f0f0f0;
+  color: #007bff;
+}
+
+.shared-booking-header h1 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+  color: #333;
+}
+
+.shared-booking-content {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+}
+
+@media (min-width: 768px) {
+  .shared-booking-content {
+    grid-template-columns: 1fr 2fr;
+  }
+}
+
+.shared-booking-property-summary {
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  height: fit-content;
+}
+
+.property-image img {
+  width: 100%;
+  height: 200px;
+  object-fit: cover;
+}
+
+.placeholder-image {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #f0f0f0;
+  color: #777;
+}
+
+.property-details {
+  padding: 1.5rem;
+}
+
+.property-details h2 {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin: 0 0 0.5rem 0;
+  color: #333;
+}
+
+.property-location {
+  color: #666;
+  margin-bottom: 0.5rem;
+}
+
+.property-type,
+.property-bedrooms {
+  color: #777;
+  font-size: 0.9rem;
+  margin: 0.25rem 0;
+}
+
+.shared-booking-form {
+  width: 100%;
+}
+
+.shared-booking-loading,
+.shared-booking-error,
+.shared-booking-not-found {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 400px;
+  font-size: 18px;
+}
+
+.shared-booking-error {
+  color: #dc3545;
+}
+
+/* Success page styles */
+.booking-success-container {
+  max-width: 800px;
+  margin: 3rem auto;
+  padding: 2rem;
+  text-align: center;
+  background-color: white;
+  border-radius: 8px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.booking-success-icon {
+  color: #28a745;
+  font-size: 4rem;
+  margin-bottom: 1rem;
+}
+
+.booking-success-title {
+  font-size: 2rem;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  color: #333;
+}
+
+.booking-success-message {
+  color: #555;
+  margin-bottom: 2rem;
+  line-height: 1.6;
+}
+
+.booking-success-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+}
+
+.view-bookings-btn,
+.return-home-btn {
+  padding: 0.75rem 1.5rem;
+  border-radius: 4px;
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+}
+
+.view-bookings-btn {
+  background-color: #007bff;
+  color: white;
+}
+
+.view-bookings-btn:hover {
+  background-color: #0069d9;
+}
+
+.return-home-btn {
+  background-color: #f8f9fa;
+  color: #333;
+  border: 1px solid #dee2e6;
+}
+
+.return-home-btn:hover {
+  background-color: #e9ecef;
+} 
