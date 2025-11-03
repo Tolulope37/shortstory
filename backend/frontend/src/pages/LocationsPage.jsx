@@ -294,7 +294,7 @@ const LocationsPage = () => {
                           width="100%"
                           height="100%"
                           style={{ border: 0, borderRadius: '0.5rem' }}
-                          src={`https://www.google.com/maps/embed/v1/place?key=AIzaSyBacndSAxf8mC6K8lwEjNgvD_fumxAghn0&q=${selectedProperty.location.lat},${selectedProperty.location.lng}&zoom=15`}
+                          src={`https://www.google.com/maps/embed/v1/place?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&q=${selectedProperty.location.lat},${selectedProperty.location.lng}&zoom=15`}
                           allowFullScreen
                         ></iframe>
                       </div>

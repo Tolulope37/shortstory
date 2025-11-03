@@ -18,7 +18,7 @@ const PropertyMap = ({ properties, onPropertySelect }) => {
     }
 
     const googleMapScript = document.createElement('script');
-    googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=AIzaSyBacndSAxf8mC6K8lwEjNgvD_fumxAghn0&libraries=places`;
+    googleMapScript.src = `https://maps.googleapis.com/maps/api/js?key=${process.env.REACT_APP_GOOGLE_MAPS_API_KEY}&libraries=places`;
     googleMapScript.async = true;
     googleMapScript.defer = true;
     
