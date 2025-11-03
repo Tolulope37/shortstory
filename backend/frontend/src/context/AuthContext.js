@@ -102,20 +102,11 @@ export function AuthProvider({ children }) {
   };
 
   // For development/debugging - direct login
-  const directLogin = () => {
-    const mockUser = {
-      id: 1,
-      username: 'admin',
-      name: 'Admin User',
-      role: 'admin',
-      email: 'admin@example.com'
-    };
-    
-    const token = 'mock-jwt-token-1';
-    localStorage.setItem('token', token);
-    setUser(mockUser);
-    setError(null);
-    return true;
+  const directLogin = async () => {
+    // This function is deprecated - use login() instead
+    // Kept for backwards compatibility only
+    console.warn('directLogin() is deprecated. Use login() instead.');
+    return false;
   };
 
   const signup = async (userData) => {

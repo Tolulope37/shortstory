@@ -1,7 +1,12 @@
 const jwt = require('jsonwebtoken');
 const logger = require('./logger');
 
-const JWT_SECRET = process.env.JWT_SECRET || 'your-secret-key-change-in-production';
+// CRITICAL: JWT_SECRET must be set in environment variables
+if (!process.env.JWT_SECRET) {
+  throw new Error('FATAL: JWT_SECRET environment variable is not set. Application cannot start.');
+}
+
+const JWT_SECRET = process.env.JWT_SECRET;
 const JWT_EXPIRE = process.env.JWT_EXPIRE || '30d';
 const JWT_REFRESH_EXPIRE = process.env.JWT_REFRESH_EXPIRE || '90d';
 
