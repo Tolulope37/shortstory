@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { MapPin, Calendar, User, DollarSign } from 'lucide-react';
+import { MapPin, Calendar, User } from 'lucide-react';
 
 export default function GuestTrips() {
   const [trips, setTrips] = useState([]);
@@ -71,7 +71,7 @@ export default function GuestTrips() {
                     {trip.guests} {trip.guests === 1 ? 'guest' : 'guests'}
                   </div>
                   <div className="flex items-center">
-                    <DollarSign className="h-4 w-4 mr-2" />
+                    <span className="font-bold mr-1">₦</span>
                     {trip.totalPrice}
                   </div>
                 </div>

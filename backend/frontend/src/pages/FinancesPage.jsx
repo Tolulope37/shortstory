@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
 import { 
-  Coins, DollarSign, Calendar, TrendingUp, TrendingDown, PieChart, 
+  Coins, Calendar, TrendingUp, TrendingDown, PieChart, 
   BarChart, Filter, Home, ArrowUpRight, Download, ChevronDown, 
   LineChart, BanknoteIcon, Receipt, Clock, X
 } from 'lucide-react';
@@ -342,7 +342,7 @@ export default function FinancesPage() {
               </h3>
             </div>
             <div className="w-10 h-10 rounded-full bg-blue-100 flex items-center justify-center">
-              <DollarSign size={18} className="text-blue-600" />
+              <span className="text-blue-600 font-bold text-xl">₦</span>
             </div>
           </div>
         </div>

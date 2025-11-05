@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { CreditCard, Download, DollarSign } from 'lucide-react';
+import { CreditCard, Download } from 'lucide-react';
 
 export default function GuestPayments() {
   const [payments, setPayments] = useState([]);
@@ -81,7 +81,7 @@ export default function GuestPayments() {
         <h2 className="text-xl font-semibold text-gray-900 mb-4">Payment History</h2>
         {payments.length === 0 ? (
           <div className="bg-white rounded-lg shadow-sm p-6 text-center">
-            <DollarSign className="mx-auto h-12 w-12 text-gray-400 mb-3" />
+            <div className="mx-auto h-12 w-12 text-gray-400 mb-3 flex items-center justify-center text-4xl font-bold">₦</div>
             <p className="text-gray-600">No payment history</p>
           </div>
         ) : (

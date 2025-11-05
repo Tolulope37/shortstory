@@ -4,7 +4,7 @@ import {
   Wrench, Search, Edit, Trash, 
   Home, Calendar, AlertCircle, 
   CheckCircle, PlusCircle, FileText, 
-  Upload, X, Clock, DollarSign,
+  Upload, X, Clock,
   Tag, User, Users
 } from 'lucide-react';
 import '../styles/MaintenancePage.css';

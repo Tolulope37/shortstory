@@ -5,7 +5,7 @@ import 'react-big-calendar/lib/css/react-big-calendar.css';
 import { 
   ChevronLeft, ChevronRight, Calendar as CalendarIcon, 
   UserCheck, UserX, Trash2, Settings, Filter,
-  Home, Users, ClipboardList, DollarSign, Plus, Clock, X,
+  Home, Users, ClipboardList, Plus, Clock, X,
   CheckCircle, AlertCircle
 } from 'lucide-react';
 import '../styles/CalendarPage.css';
@@ -465,7 +465,7 @@ const CalendarPage = () => {
                     </div>
                     <div className="info-group contact-info">
                       <div className="info-label">
-                        <DollarSign size={16} className="info-icon" />
+                        <span className="info-icon font-bold">₦</span>
                         Payment:
                       </div>
                       <div className="info-value">

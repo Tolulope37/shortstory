@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Heart, MapPin, Star, DollarSign } from 'lucide-react';
+import { Heart, MapPin, Star } from 'lucide-react';
 
 export default function GuestFavorites() {
   const [favorites, setFavorites] = useState([]);
@@ -86,7 +86,7 @@ export default function GuestFavorites() {
                       <span>{property.rating} ({property.reviewCount} reviews)</span>
                     </div>
                     <div className="flex items-center font-semibold text-gray-900">
-                      <DollarSign className="h-4 w-4" />
+                      <span className="font-bold mr-1">₦</span>
                       {property.price}
                     </div>
                   </div>
