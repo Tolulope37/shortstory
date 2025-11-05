@@ -56,13 +56,7 @@ export default function SubscriptionPlansPage() {
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 relative overflow-hidden">
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
-      <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
-      <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
-      
-      <div className="relative z-10">
+    <div className="min-h-screen bg-gray-50">
       {/* Header */}
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
@@ -91,27 +85,27 @@ export default function SubscriptionPlansPage() {
           </p>
 
           {/* Billing Toggle */}
-          <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full p-1.5 shadow-lg border border-gray-200">
+          <div className="inline-flex items-center bg-white rounded-full p-1 shadow-md border border-gray-200">
             <button
               onClick={() => setBillingCycle('monthly')}
-              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
+              className={`px-6 py-2 rounded-full font-medium transition-all ${
                 billingCycle === 'monthly'
-                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105'
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Monthly
             </button>
             <button
               onClick={() => setBillingCycle('annual')}
-              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 relative ${
+              className={`px-6 py-2 rounded-full font-medium transition-all relative ${
                 billingCycle === 'annual'
-                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105'
-                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
+                  ? 'bg-blue-600 text-white shadow-sm'
+                  : 'text-gray-600 hover:text-gray-900'
               }`}
             >
               Annual
-              <span className="ml-2 text-xs bg-green-500 text-white px-2.5 py-1 rounded-full font-bold shadow-md animate-pulse">
+              <span className="ml-2 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">
                 Save 17%
               </span>
             </button>
@@ -119,7 +113,7 @@ export default function SubscriptionPlansPage() {
         </div>
 
         {/* Comparison Table */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
+        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
           {/* Header Row with Plan Cards */}
           <div className="grid grid-cols-3 gap-6 p-8 bg-gradient-to-r from-gray-50 via-white to-gray-50 border-b-4 border-gray-200">
             <div className="text-left flex flex-col justify-center">
@@ -128,58 +122,54 @@ export default function SubscriptionPlansPage() {
             </div>
             
             {/* Starter Plan Header */}
-            <div className="text-center bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-xl p-8 border-2 border-blue-300 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group">
-              <h3 className="text-3xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Starter</h3>
-              <div className="mb-4 transform transition-all duration-300 group-hover:scale-110">
-                <div className="inline-block">
-                  <span className="text-6xl font-black bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
-                    £{calculatePrice(100, 1000)}
-                  </span>
-                  <span className="text-gray-600 text-lg font-medium">
-                    /{billingCycle === 'monthly' ? 'mo' : 'yr'}
-                  </span>
-                </div>
+            <div className="text-center bg-white rounded-xl shadow-lg p-6 border-2 border-blue-200">
+              <h3 className="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
+              <div className="mb-4">
+                <span className="text-4xl font-extrabold text-blue-600">
+                  £{calculatePrice(100, 1000)}
+                </span>
+                <span className="text-gray-600">
+                  /{billingCycle === 'monthly' ? 'month' : 'year'}
+                </span>
               </div>
-              <p className="text-sm text-gray-700 mb-6 leading-relaxed">
+              <p className="text-sm text-gray-600 mb-4">
                 Perfect for independent hosts and small teams getting started.
               </p>
               <button
                 onClick={() => handleSelectPlan('starter')}
-                className="w-full py-4 px-6 rounded-xl font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
+                className="w-full py-3 px-6 rounded-lg font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-all"
               >
-                Get Started →
+                Get Started
               </button>
-              <p className="text-xs text-gray-500 mt-4 italic leading-relaxed">
+              <p className="text-xs text-gray-500 mt-3 italic">
                 Ideal if you manage a few short-lets and want automation without complexity.
               </p>
             </div>
 
             {/* Professional Plan Header */}
-            <div className="text-center bg-gradient-to-br from-purple-600 via-purple-700 to-pink-600 rounded-2xl shadow-2xl p-8 text-white relative transform transition-all duration-300 hover:scale-105 hover:shadow-purple-500/50 hover:shadow-3xl group border-2 border-purple-400">
-              <div className="absolute -top-4 right-6 bg-gradient-to-r from-yellow-400 to-orange-400 text-purple-900 px-5 py-2 rounded-full text-xs font-black shadow-xl animate-bounce">
+            <div className="text-center bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl shadow-lg p-6 text-white relative">
+              <div className="absolute -top-3 right-4 bg-yellow-400 text-purple-900 px-3 py-1 rounded-full text-xs font-bold">
                 ⭐ MOST POPULAR
               </div>
-              <h3 className="text-3xl font-bold mb-3 group-hover:scale-105 transition-transform">Professional</h3>
-              <div className="mb-4 transform transition-all duration-300 group-hover:scale-110">
-                <div className="inline-block">
-                  <span className="text-6xl font-black text-white drop-shadow-lg">
-                    £{calculatePrice(500, 5000)}
-                  </span>
-                  <span className="text-purple-100 text-lg font-medium">
-                    /{billingCycle === 'monthly' ? 'mo' : 'yr'}
-                  </span>
-                </div>
+              <h3 className="text-2xl font-bold mb-2">Professional</h3>
+              <div className="mb-4">
+                <span className="text-4xl font-extrabold">
+                  £{calculatePrice(500, 5000)}
+                </span>
+                <span className="text-purple-100">
+                  /{billingCycle === 'monthly' ? 'month' : 'year'}
+                </span>
               </div>
-              <p className="text-sm text-purple-50 mb-6 leading-relaxed">
+              <p className="text-sm text-purple-100 mb-4">
                 Built for property managers and high-volume operators who want automation, analytics, and control at scale.
               </p>
               <button
                 onClick={() => handleSelectPlan('professional')}
-                className="w-full py-4 px-6 rounded-xl font-bold text-lg bg-white hover:bg-gray-50 text-purple-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+                className="w-full py-3 px-6 rounded-lg font-semibold bg-white hover:bg-gray-100 text-purple-700 transition-all"
               >
-                Get Started →
+                Get Started
               </button>
-              <p className="text-xs text-purple-100 mt-4 italic leading-relaxed">
+              <p className="text-xs text-purple-100 mt-3 italic">
                 Best for teams managing 10+ properties or 300+ monthly guests who want full automation, AI-driven pricing, and enterprise-level reporting.
               </p>
             </div>
@@ -228,34 +218,30 @@ export default function SubscriptionPlansPage() {
                 
                 {/* Category Features */}
                 {category.items.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="grid grid-cols-3 gap-8 px-8 py-5 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 transition-all duration-200 group">
+                  <div key={featureIndex} className="grid grid-cols-3 gap-8 px-8 py-5 hover:bg-gray-50 transition-colors">
                     <div className="flex items-center">
-                      <span className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors">{feature.name}</span>
+                      <span className="text-gray-700 font-medium">{feature.name}</span>
                     </div>
                     
                     {/* Starter Value */}
                     <div className="flex items-center justify-center">
                       {feature.starter === true ? (
-                        <div className="p-1.5 rounded-full bg-green-100 group-hover:bg-green-200 transition-colors">
-                          <Check className="h-5 w-5 text-green-600" />
-                        </div>
+                        <Check className="h-6 w-6 text-green-500" />
                       ) : feature.starter === false ? (
-                        <X className="h-5 w-5 text-gray-300" />
+                        <X className="h-6 w-6 text-gray-300" />
                       ) : (
-                        <span className="text-center text-gray-700 font-medium group-hover:text-blue-600 transition-colors">{feature.starter}</span>
+                        <span className="text-center text-gray-700">{feature.starter}</span>
                       )}
                     </div>
                     
                     {/* Professional Value */}
                     <div className="flex items-center justify-center">
                       {feature.professional === true ? (
-                        <div className="p-1.5 rounded-full bg-green-100 group-hover:bg-green-200 transition-colors">
-                          <Check className="h-5 w-5 text-green-600" />
-                        </div>
+                        <Check className="h-6 w-6 text-green-500" />
                       ) : feature.professional === false ? (
-                        <X className="h-5 w-5 text-gray-300" />
+                        <X className="h-6 w-6 text-gray-300" />
                       ) : (
-                        <span className="text-center text-purple-700 font-semibold group-hover:text-purple-800 transition-colors">{feature.professional}</span>
+                        <span className="text-center text-purple-700 font-medium">{feature.professional}</span>
                       )}
                     </div>
                   </div>
@@ -265,41 +251,41 @@ export default function SubscriptionPlansPage() {
           </div>
 
           {/* Bottom CTA */}
-          <div className="grid grid-cols-3 gap-8 p-8 bg-gradient-to-r from-gray-50 via-white to-gray-50 border-t-4 border-gray-200">
+          <div className="grid grid-cols-3 gap-8 p-8 bg-gray-50 border-t-4 border-gray-200">
             <div></div>
             <div className="text-center">
               <button
                 onClick={() => handleSelectPlan('starter')}
-                className="w-full py-4 px-6 rounded-xl font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+                className="w-full py-3 px-6 rounded-lg font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-all shadow-lg"
               >
-                Start with Starter →
+                Start with Starter
               </button>
             </div>
             <div className="text-center">
               <button
                 onClick={() => handleSelectPlan('professional')}
-                className="w-full py-4 px-6 rounded-xl font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
+                className="w-full py-3 px-6 rounded-lg font-semibold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-all shadow-lg"
               >
-                Start with Professional →
+                Start with Professional
               </button>
             </div>
           </div>
         </div>
 
         {/* Trust Signals */}
-        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-10 max-w-5xl mx-auto mt-12 border border-gray-200">
+        <div className="bg-white rounded-2xl shadow-lg p-8 max-w-5xl mx-auto mt-12">
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div className="group hover:scale-105 transition-transform duration-300">
-              <div className="text-4xl font-black bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent mb-2">30-Day</div>
-              <div className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors">Money-back guarantee</div>
+            <div>
+              <div className="text-3xl font-bold text-blue-600 mb-2">30-Day</div>
+              <div className="text-gray-600">Money-back guarantee</div>
             </div>
-            <div className="group hover:scale-105 transition-transform duration-300">
-              <div className="text-4xl font-black bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">24/7</div>
-              <div className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors">Support available</div>
+            <div>
+              <div className="text-3xl font-bold text-green-600 mb-2">24/7</div>
+              <div className="text-gray-600">Support available</div>
             </div>
-            <div className="group hover:scale-105 transition-transform duration-300">
-              <div className="text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">No Lock-in</div>
-              <div className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors">Cancel anytime, hassle-free</div>
+            <div>
+              <div className="text-3xl font-bold text-purple-600 mb-2">No Lock-in</div>
+              <div className="text-gray-600">Cancel anytime, hassle-free</div>
             </div>
           </div>
         </div>
@@ -357,26 +343,6 @@ export default function SubscriptionPlansPage() {
             Contact Sales
           </button>
         </div>
-      </div>
-      
-      {/* Custom CSS for animations */}
-      <style jsx>{`
-        @keyframes blob {
-          0%, 100% { transform: translate(0, 0) scale(1); }
-          25% { transform: translate(20px, -50px) scale(1.1); }
-          50% { transform: translate(-20px, 20px) scale(0.9); }
-          75% { transform: translate(10px, 50px) scale(1.05); }
-        }
-        .animate-blob {
-          animation: blob 7s infinite;
-        }
-        .animation-delay-2000 {
-          animation-delay: 2s;
-        }
-        .animation-delay-4000 {
-          animation-delay: 4s;
-        }
-      `}</style>
       </div>
     </div>
   );
