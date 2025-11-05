@@ -21,6 +21,7 @@ export default function SubscriptionPlansPage() {
       features: [
         'Up to 50 guests per month',
         'Unlimited properties',
+        'List on up to 3 platforms (Airbnb, Booking.com, etc.)',
         'Automated messaging',
         'Basic analytics & reports',
         'Calendar management',
@@ -30,10 +31,10 @@ export default function SubscriptionPlansPage() {
         'Mobile app access'
       ],
       notIncluded: [
+        'Unlimited platform listings',
         'Priority support',
         'Advanced analytics',
-        'API access',
-        'White-label branding'
+        'Team collaboration tools'
       ],
       popular: false,
       icon: Users,
@@ -52,6 +53,7 @@ export default function SubscriptionPlansPage() {
       features: [
         'Up to 350 guests per month',
         'Unlimited properties',
+        'List on unlimited platforms (Airbnb, Booking.com, etc.)',
         'Advanced automated messaging',
         'Advanced analytics & reports',
         'Calendar management',
@@ -61,9 +63,7 @@ export default function SubscriptionPlansPage() {
         'Mobile app access',
         'Team collaboration tools',
         'Custom message templates',
-        'Revenue forecasting',
-        'API access',
-        'White-label branding'
+        'Revenue forecasting'
       ],
       notIncluded: [],
       popular: true,
