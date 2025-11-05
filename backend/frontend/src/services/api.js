@@ -157,10 +157,10 @@ const guestService = {
   getAll: async () => {
     try {
       const response = await api.get('/guests');
-      return response.data;
+      return response.data.data || [];
     } catch (error) {
       console.error('Error fetching guests:', error);
-      throw error;
+      return [];
     }
   },
   
@@ -221,10 +221,10 @@ const communicationService = {
   getGuestMessages: async (guestId) => {
     try {
       const response = await api.get(`/communications/messages/${guestId}`);
-      return response.data || [];
+      return response.data.data || [];
     } catch (error) {
       console.error(`Error fetching messages for guest ${guestId}:`, error);
-      throw error;
+      return [];
     }
   },
   
@@ -243,10 +243,10 @@ const communicationService = {
   getMessageTemplates: async () => {
     try {
       const response = await api.get('/communications/templates');
-      return response.data || [];
+      return response.data.data || [];
     } catch (error) {
       console.error('Error fetching message templates:', error);
-      throw error;
+      return [];
     }
   },
   
@@ -254,10 +254,10 @@ const communicationService = {
   getWelcomePacks: async () => {
     try {
       const response = await api.get('/communications/welcome-packs');
-      return response.data || [];
+      return response.data.data || [];
     } catch (error) {
       console.error('Error fetching welcome packs:', error);
-      throw error;
+      return [];
     }
   },
   
@@ -265,10 +265,10 @@ const communicationService = {
   getCheckInPacks: async () => {
     try {
       const response = await api.get('/communications/check-in-packs');
-      return response.data || [];
+      return response.data.data || [];
     } catch (error) {
       console.error('Error fetching check-in packs:', error);
-      throw error;
+      return [];
     }
   },
   
@@ -298,10 +298,10 @@ const communicationService = {
   getMessageAutomations: async () => {
     try {
       const response = await api.get('/communications/automations');
-      return response.data || [];
+      return response.data.data || [];
     } catch (error) {
       console.error('Error fetching message automations:', error);
-      throw error;
+      return [];
     }
   },
   
@@ -334,10 +334,10 @@ const teamService = {
   getAllMembers: async () => {
     try {
       const response = await api.get('/team/members');
-      return response.data || [];
+      return response.data.data || [];
     } catch (error) {
       console.error('Error fetching team members:', error);
-      throw error;
+      return [];
     }
   },
   
@@ -385,10 +385,10 @@ const teamService = {
   getRoles: async () => {
     try {
       const response = await api.get('/team/roles');
-      return response.data || [];
+      return response.data.data || [];
     } catch (error) {
       console.error('Error fetching roles:', error);
-      throw error;
+      return [];
     }
   },
   
@@ -396,10 +396,10 @@ const teamService = {
   getTasks: async (filters = {}) => {
     try {
       const response = await api.get('/team/tasks', { params: filters });
-      return response.data || [];
+      return response.data.data || [];
     } catch (error) {
       console.error('Error fetching tasks:', error);
-      throw error;
+      return [];
     }
   },
   
@@ -482,10 +482,10 @@ const maintenanceService = {
   getAllLogs: async (filters = {}) => {
     try {
       const response = await api.get('/maintenance/logs', { params: filters });
-      return response.data || [];
+      return response.data.data || [];
     } catch (error) {
       console.error('Error fetching maintenance logs:', error);
-      throw error;
+      return [];
     }
   },
   
@@ -587,16 +587,18 @@ const maintenanceService = {
   },
   
   getCategories: async () => {
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 200));
-    
-    return [
-      { id: 'plumbing', name: 'Plumbing' },
-      { id: 'electrical', name: 'Electrical' },
-      { id: 'appliances', name: 'Appliances' },
-      { id: 'furniture', name: 'Furniture' },
-      { id: 'structural', name: 'Structural' },
-      { id: 'electronics', name: 'Electronics & Internet' },
+    try {
+      const response = await api.get('/maintenance/categories');
+      return response.data.data || [];
+    } catch (error) {
+      console.error('Error fetching categories:', error);
+      return [
+        { id: 'plumbing', name: 'Plumbing' },
+        { id: 'electrical', name: 'Electrical' },
+        { id: 'cleaning', name: 'Cleaning' },
+        { id: 'repair', name: 'Repair' },
+        { id: 'inspection', name: 'Inspection' },
+        { id: 'other', name: 'Other' },
       { id: 'hvac', name: 'HVAC' },
       { id: 'exterior', name: 'Exterior' },
       { id: 'other', name: 'Other' }
