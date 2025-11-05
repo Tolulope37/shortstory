@@ -51,7 +51,7 @@ export default function GuestBookings() {
         <h1 className="text-3xl font-bold text-gray-900 mb-2">My Bookings</h1>
         <p className="text-gray-600">View and manage all your bookings</p>
       </div>
-
+      
       {/* Filter Tabs */}
       <div className="flex space-x-4 mb-6 border-b border-gray-200">
         {['all', 'upcoming', 'past', 'cancelled'].map((tab) => (
@@ -60,7 +60,7 @@ export default function GuestBookings() {
             onClick={() => setFilter(tab)}
             className={`pb-3 px-1 text-sm font-medium capitalize ${
               filter === tab
-                ? 'border-b-2 border-blue-600 text-blue-600'
+              ? 'border-b-2 border-blue-600 text-blue-600' 
                 : 'text-gray-500 hover:text-gray-700'
             }`}
           >
@@ -68,7 +68,7 @@ export default function GuestBookings() {
           </button>
         ))}
       </div>
-
+      
       {/* Bookings List */}
       {filteredBookings.length === 0 ? (
         <div className="text-center py-12">
@@ -142,10 +142,10 @@ export default function GuestBookings() {
               <p className="text-gray-600">Check-out: {new Date(selectedBooking.checkOut).toLocaleDateString()}</p>
               <p className="text-gray-600">Status: {selectedBooking.status}</p>
               <p className="text-gray-900 font-bold">Total: {selectedBooking.totalPrice}</p>
-            </div>
-          </div>
+                </div>
+              </div>
         </div>
       )}
     </div>
   );
-}
+} 

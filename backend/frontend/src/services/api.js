@@ -592,14 +592,14 @@ const maintenanceService = {
       return response.data.data || [];
     } catch (error) {
       console.error('Error fetching categories:', error);
-      return [
-        { id: 'plumbing', name: 'Plumbing' },
-        { id: 'electrical', name: 'Electrical' },
+    return [
+      { id: 'plumbing', name: 'Plumbing' },
+      { id: 'electrical', name: 'Electrical' },
         { id: 'cleaning', name: 'Cleaning' },
         { id: 'repair', name: 'Repair' },
         { id: 'inspection', name: 'Inspection' },
-        { id: 'other', name: 'Other' }
-      ];
+      { id: 'other', name: 'Other' }
+    ];
     }
   }
 };

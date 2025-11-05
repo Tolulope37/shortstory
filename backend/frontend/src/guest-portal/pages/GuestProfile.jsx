@@ -158,7 +158,7 @@ export default function GuestProfile() {
             <label className="block text-sm font-medium text-gray-700 mb-2">
               <MapPin className="inline h-4 w-4 mr-2" />
               Address
-            </label>
+                    </label>
             <textarea
               value={profile.address || ''}
               onChange={(e) => setProfile({ ...profile, address: e.target.value })}
@@ -178,7 +178,7 @@ export default function GuestProfile() {
               placeholder="Tell us a bit about yourself..."
               className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-600 disabled:bg-gray-100"
             />
-          </div>
+            </div>
           </div>
         )}
     </div>
