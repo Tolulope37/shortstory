@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { teamService } from '../services/api';
+import { teamService, propertyService } from '../services/api';
 import { UserPlus, Search, Edit, Trash, Home, Calendar, AlertCircle, CheckCircle, X } from 'lucide-react';
 import '../styles/TeamPage.css';
 import { loadData } from '../utils/loadingUtils';

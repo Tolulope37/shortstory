@@ -5,7 +5,7 @@ import {
   Heart, Award, Phone, Mail, Calendar, Home, MapPin, X, MessageSquare,
   StarIcon, Save, CheckCircle
 } from 'lucide-react';
-import { guestService } from '../services/api';
+import { guestService, propertyService } from '../services/api';
 import '../styles/GuestsPage.css';
 import '../styles/BookingForm.css';
 import { createPortal } from 'react-dom';
@@ -13,6 +13,7 @@ import { createPortal } from 'react-dom';
 export default function GuestsPage() {
   const navigate = useNavigate();
   const [guests, setGuests] = useState([]);
+  const [properties, setProperties] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [selectedGuest, setSelectedGuest] = useState(null);
