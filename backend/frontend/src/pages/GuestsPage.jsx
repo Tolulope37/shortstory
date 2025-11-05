@@ -583,14 +583,22 @@ export default function GuestsPage() {
                 </svg>
               </button>
             </div>
-            <div className="flex items-center rounded-lg bg-gray-100 p-2 w-64">
-              <Search size={16} className="text-gray-500" />
+            <div style={{ position: 'relative', width: '300px', display: 'flex', alignItems: 'center' }}>
+              <Search size={16} style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: '#999', pointerEvents: 'none', zIndex: 1 }} />
               <input 
                 type="text" 
                 placeholder="Search guests..." 
                 value={searchTerm}
                 onChange={(e) => setSearchTerm(e.target.value)}
-                className="bg-transparent border-none focus:outline-none ml-2 text-sm w-full"
+                style={{ 
+                  width: '100%', 
+                  padding: '12px 14px 12px 40px', 
+                  border: '1px solid #ddd', 
+                  borderRadius: '8px', 
+                  fontSize: '14px',
+                  lineHeight: '1.5',
+                  height: '42px'
+                }}
               />
             </div>
           </div>
