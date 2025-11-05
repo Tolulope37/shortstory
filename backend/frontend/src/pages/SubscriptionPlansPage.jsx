@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-import { Check, X, Shield } from 'lucide-react';
+import { Check, X, Shield, Users, Home, Zap, MessageSquare, BarChart3, Headphones, Smartphone } from 'lucide-react';
 
 export default function SubscriptionPlansPage() {
   const navigate = useNavigate();
@@ -14,49 +14,55 @@ export default function SubscriptionPlansPage() {
     return billingCycle === 'monthly' ? monthly : annual;
   };
 
-  // Feature comparison data
+  // Feature comparison data with icons
   const features = [
-    { category: 'Usage Limits', items: [
+    { category: 'Usage Limits', icon: Users, color: 'blue', items: [
       { name: 'Guest stays per month', starter: 'Up to 50', professional: 'Up to 350' },
       { name: 'Properties', starter: 'Unlimited', professional: 'Unlimited' },
       { name: 'Team members', starter: '2 included', professional: 'Unlimited' },
       { name: 'Platform listings', starter: 'Up to 3 platforms', professional: 'All major platforms' },
     ]},
-    { category: 'Property Management', items: [
+    { category: 'Property Management', icon: Home, color: 'green', items: [
       { name: 'Photos per property', starter: 'Up to 10', professional: 'Unlimited' },
       { name: 'Message templates', starter: '5 quick reply templates', professional: 'Unlimited custom templates' },
       { name: 'Calendar & booking management', starter: true, professional: true },
       { name: 'Multi-calendar sync', starter: false, professional: 'Avoid double bookings' },
       { name: 'Cleaning & maintenance scheduling', starter: false, professional: true },
     ]},
-    { category: 'AI & Pricing Tools', items: [
+    { category: 'AI & Pricing Tools', icon: Zap, color: 'yellow', items: [
       { name: 'AI pricing preview', starter: 'Revenue estimates only', professional: false },
       { name: 'Advanced AI predictions', starter: false, professional: 'Pricing & occupancy' },
       { name: 'Dynamic pricing tools', starter: false, professional: 'Real-time AI adjustments' },
       { name: 'Revenue forecasting', starter: false, professional: true },
     ]},
-    { category: 'Guest Communication', items: [
+    { category: 'Guest Communication', icon: MessageSquare, color: 'purple', items: [
       { name: 'Automated guest messaging', starter: true, professional: true },
       { name: 'Guest messaging inbox', starter: 'Platform connections only', professional: 'Platform connections' },
       { name: 'SMS / WhatsApp communication', starter: false, professional: true },
       { name: 'Automated review requests', starter: false, professional: true },
     ]},
-    { category: 'Analytics & Reports', items: [
+    { category: 'Analytics & Reports', icon: BarChart3, color: 'indigo', items: [
       { name: 'Analytics & reports', starter: 'Basic (bookings, revenue, occupancy)', professional: 'Advanced analytics & revenue reports' },
       { name: 'Report exports', starter: 'PDF only', professional: 'CSV / Excel for accounting' },
     ]},
-    { category: 'Support & Onboarding', items: [
+    { category: 'Support & Onboarding', icon: Headphones, color: 'pink', items: [
       { name: 'Support', starter: 'Email (24–48 hr response)', professional: 'Priority 24/7 (1–4 hr response)' },
       { name: 'Onboarding', starter: 'Self-service', professional: 'Dedicated onboarding specialist' },
       { name: 'Team collaboration tools', starter: false, professional: 'Tasks, permissions, notes' },
     ]},
-    { category: 'Access', items: [
+    { category: 'Access', icon: Smartphone, color: 'teal', items: [
       { name: 'Mobile app access', starter: true, professional: true },
     ]},
   ];
 
   return (
-    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-white to-purple-50">
+    <div className="min-h-screen bg-gradient-to-br from-blue-50 via-indigo-50 to-purple-100 relative overflow-hidden">
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob"></div>
+      <div className="absolute top-0 right-0 w-96 h-96 bg-purple-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-2000"></div>
+      <div className="absolute bottom-0 left-1/2 w-96 h-96 bg-pink-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-blob animation-delay-4000"></div>
+      
+      <div className="relative z-10">
       {/* Header */}
       <div className="container mx-auto px-4 py-8">
         <div className="flex justify-between items-center mb-8">
@@ -85,27 +91,27 @@ export default function SubscriptionPlansPage() {
           </p>
 
           {/* Billing Toggle */}
-          <div className="inline-flex items-center bg-white rounded-full p-1 shadow-md border border-gray-200">
+          <div className="inline-flex items-center bg-white/80 backdrop-blur-sm rounded-full p-1.5 shadow-lg border border-gray-200">
             <button
               onClick={() => setBillingCycle('monthly')}
-              className={`px-6 py-2 rounded-full font-medium transition-all ${
+              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 ${
                 billingCycle === 'monthly'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
               Monthly
             </button>
             <button
               onClick={() => setBillingCycle('annual')}
-              className={`px-6 py-2 rounded-full font-medium transition-all relative ${
+              className={`px-8 py-3 rounded-full font-semibold transition-all duration-300 relative ${
                 billingCycle === 'annual'
-                  ? 'bg-blue-600 text-white shadow-sm'
-                  : 'text-gray-600 hover:text-gray-900'
+                  ? 'bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg transform scale-105'
+                  : 'text-gray-600 hover:text-gray-900 hover:bg-gray-50'
               }`}
             >
               Annual
-              <span className="ml-2 text-xs bg-green-500 text-white px-2 py-0.5 rounded-full">
+              <span className="ml-2 text-xs bg-green-500 text-white px-2.5 py-1 rounded-full font-bold shadow-md animate-pulse">
                 Save 17%
               </span>
             </button>
@@ -113,33 +119,35 @@ export default function SubscriptionPlansPage() {
         </div>
 
         {/* Comparison Table */}
-        <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
+        <div className="bg-white/90 backdrop-blur-sm rounded-3xl shadow-2xl overflow-hidden border border-gray-200">
           {/* Header Row with Plan Cards */}
-          <div className="grid grid-cols-3 gap-6 p-8 bg-gradient-to-r from-gray-50 to-gray-100 border-b-4 border-gray-200">
+          <div className="grid grid-cols-3 gap-6 p-8 bg-gradient-to-r from-gray-50 via-white to-gray-50 border-b-4 border-gray-200">
             <div className="text-left flex flex-col justify-center">
               <h3 className="text-3xl font-bold text-gray-900 mb-2">Features</h3>
               <p className="text-gray-600">Compare what's included</p>
             </div>
             
             {/* Starter Plan Header */}
-            <div className="text-center bg-white rounded-xl shadow-lg p-8 border-2 border-blue-300 transform transition-all hover:scale-105">
-              <h3 className="text-3xl font-bold text-gray-900 mb-3">Starter</h3>
-              <div className="mb-4">
-                <span className="text-5xl font-extrabold text-blue-600">
-                  £{calculatePrice(100, 1000)}
-                </span>
-                <span className="text-gray-600 text-lg">
-                  /{billingCycle === 'monthly' ? 'mo' : 'yr'}
-                </span>
+            <div className="text-center bg-gradient-to-br from-white to-blue-50 rounded-2xl shadow-xl p-8 border-2 border-blue-300 transform transition-all duration-300 hover:scale-105 hover:shadow-2xl group">
+              <h3 className="text-3xl font-bold text-gray-900 mb-3 group-hover:text-blue-600 transition-colors">Starter</h3>
+              <div className="mb-4 transform transition-all duration-300 group-hover:scale-110">
+                <div className="inline-block">
+                  <span className="text-6xl font-black bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+                    £{calculatePrice(100, 1000)}
+                  </span>
+                  <span className="text-gray-600 text-lg font-medium">
+                    /{billingCycle === 'monthly' ? 'mo' : 'yr'}
+                  </span>
+                </div>
               </div>
               <p className="text-sm text-gray-700 mb-6 leading-relaxed">
                 Perfect for independent hosts and small teams getting started.
               </p>
               <button
                 onClick={() => handleSelectPlan('starter')}
-                className="w-full py-3 px-6 rounded-lg font-bold text-lg bg-blue-600 hover:bg-blue-700 text-white transition-all shadow-md hover:shadow-lg"
+                className="w-full py-4 px-6 rounded-xl font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 shadow-lg hover:shadow-xl transform hover:-translate-y-1"
               >
-                Get Started
+                Get Started →
               </button>
               <p className="text-xs text-gray-500 mt-4 italic leading-relaxed">
                 Ideal if you manage a few short-lets and want automation without complexity.
@@ -147,27 +155,29 @@ export default function SubscriptionPlansPage() {
             </div>
 
             {/* Professional Plan Header */}
-            <div className="text-center bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl shadow-2xl p-8 text-white relative transform transition-all hover:scale-105">
-              <div className="absolute -top-4 right-6 bg-yellow-400 text-purple-900 px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
+            <div className="text-center bg-gradient-to-br from-purple-600 via-purple-700 to-pink-600 rounded-2xl shadow-2xl p-8 text-white relative transform transition-all duration-300 hover:scale-105 hover:shadow-purple-500/50 hover:shadow-3xl group border-2 border-purple-400">
+              <div className="absolute -top-4 right-6 bg-gradient-to-r from-yellow-400 to-orange-400 text-purple-900 px-5 py-2 rounded-full text-xs font-black shadow-xl animate-bounce">
                 ⭐ MOST POPULAR
               </div>
-              <h3 className="text-3xl font-bold mb-3">Professional</h3>
-              <div className="mb-4">
-                <span className="text-5xl font-extrabold">
-                  £{calculatePrice(500, 5000)}
-                </span>
-                <span className="text-purple-100 text-lg">
-                  /{billingCycle === 'monthly' ? 'mo' : 'yr'}
-                </span>
+              <h3 className="text-3xl font-bold mb-3 group-hover:scale-105 transition-transform">Professional</h3>
+              <div className="mb-4 transform transition-all duration-300 group-hover:scale-110">
+                <div className="inline-block">
+                  <span className="text-6xl font-black text-white drop-shadow-lg">
+                    £{calculatePrice(500, 5000)}
+                  </span>
+                  <span className="text-purple-100 text-lg font-medium">
+                    /{billingCycle === 'monthly' ? 'mo' : 'yr'}
+                  </span>
+                </div>
               </div>
               <p className="text-sm text-purple-50 mb-6 leading-relaxed">
                 Built for property managers and high-volume operators who want automation, analytics, and control at scale.
               </p>
               <button
                 onClick={() => handleSelectPlan('professional')}
-                className="w-full py-3 px-6 rounded-lg font-bold text-lg bg-white hover:bg-gray-50 text-purple-700 transition-all shadow-md hover:shadow-lg"
+                className="w-full py-4 px-6 rounded-xl font-bold text-lg bg-white hover:bg-gray-50 text-purple-700 transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
               >
-                Get Started
+                Get Started →
               </button>
               <p className="text-xs text-purple-100 mt-4 italic leading-relaxed">
                 Best for teams managing 10+ properties or 300+ monthly guests who want full automation, AI-driven pricing, and enterprise-level reporting.
@@ -180,36 +190,45 @@ export default function SubscriptionPlansPage() {
             {features.map((category, catIndex) => (
               <div key={catIndex}>
                 {/* Category Header */}
-                <div className="bg-gray-50 px-8 py-4">
-                  <h4 className="text-lg font-bold text-gray-900">{category.category}</h4>
+                <div className="bg-gradient-to-r from-gray-50 to-white px-8 py-5 border-l-4 border-${category.color}-500">
+                  <div className="flex items-center space-x-3">
+                    <div className={`p-2 rounded-lg bg-${category.color}-100`}>
+                      <category.icon className={`h-5 w-5 text-${category.color}-600`} />
+                    </div>
+                    <h4 className="text-xl font-bold text-gray-900">{category.category}</h4>
+                  </div>
                 </div>
                 
                 {/* Category Features */}
                 {category.items.map((feature, featureIndex) => (
-                  <div key={featureIndex} className="grid grid-cols-3 gap-8 px-8 py-5 hover:bg-gray-50 transition-colors">
+                  <div key={featureIndex} className="grid grid-cols-3 gap-8 px-8 py-5 hover:bg-gradient-to-r hover:from-blue-50/50 hover:to-purple-50/50 transition-all duration-200 group">
                     <div className="flex items-center">
-                      <span className="text-gray-700 font-medium">{feature.name}</span>
+                      <span className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors">{feature.name}</span>
                     </div>
                     
                     {/* Starter Value */}
                     <div className="flex items-center justify-center">
                       {feature.starter === true ? (
-                        <Check className="h-6 w-6 text-green-500" />
+                        <div className="p-1.5 rounded-full bg-green-100 group-hover:bg-green-200 transition-colors">
+                          <Check className="h-5 w-5 text-green-600" />
+                        </div>
                       ) : feature.starter === false ? (
-                        <X className="h-6 w-6 text-gray-300" />
+                        <X className="h-5 w-5 text-gray-300" />
                       ) : (
-                        <span className="text-center text-gray-700">{feature.starter}</span>
+                        <span className="text-center text-gray-700 font-medium group-hover:text-blue-600 transition-colors">{feature.starter}</span>
                       )}
                     </div>
                     
                     {/* Professional Value */}
                     <div className="flex items-center justify-center">
                       {feature.professional === true ? (
-                        <Check className="h-6 w-6 text-green-500" />
+                        <div className="p-1.5 rounded-full bg-green-100 group-hover:bg-green-200 transition-colors">
+                          <Check className="h-5 w-5 text-green-600" />
+                        </div>
                       ) : feature.professional === false ? (
-                        <X className="h-6 w-6 text-gray-300" />
+                        <X className="h-5 w-5 text-gray-300" />
                       ) : (
-                        <span className="text-center text-purple-700 font-medium">{feature.professional}</span>
+                        <span className="text-center text-purple-700 font-semibold group-hover:text-purple-800 transition-colors">{feature.professional}</span>
                       )}
                     </div>
                   </div>
@@ -219,41 +238,41 @@ export default function SubscriptionPlansPage() {
           </div>
 
           {/* Bottom CTA */}
-          <div className="grid grid-cols-3 gap-8 p-8 bg-gray-50 border-t-4 border-gray-200">
+          <div className="grid grid-cols-3 gap-8 p-8 bg-gradient-to-r from-gray-50 via-white to-gray-50 border-t-4 border-gray-200">
             <div></div>
             <div className="text-center">
               <button
                 onClick={() => handleSelectPlan('starter')}
-                className="w-full py-3 px-6 rounded-lg font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-all shadow-lg"
+                className="w-full py-4 px-6 rounded-xl font-bold text-lg bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
               >
-                Start with Starter
+                Start with Starter →
               </button>
             </div>
             <div className="text-center">
               <button
                 onClick={() => handleSelectPlan('professional')}
-                className="w-full py-3 px-6 rounded-lg font-semibold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-all shadow-lg"
+                className="w-full py-4 px-6 rounded-xl font-bold text-lg bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-all duration-300 shadow-xl hover:shadow-2xl transform hover:-translate-y-1"
               >
-                Start with Professional
+                Start with Professional →
               </button>
             </div>
           </div>
         </div>
 
         {/* Trust Signals */}
-        <div className="bg-white rounded-2xl shadow-lg p-8 max-w-5xl mx-auto mt-12">
+        <div className="bg-white/80 backdrop-blur-sm rounded-3xl shadow-2xl p-10 max-w-5xl mx-auto mt-12 border border-gray-200">
           <div className="grid md:grid-cols-3 gap-8 text-center">
-            <div>
-              <div className="text-3xl font-bold text-blue-600 mb-2">30-Day</div>
-              <div className="text-gray-600">Money-back guarantee</div>
+            <div className="group hover:scale-105 transition-transform duration-300">
+              <div className="text-4xl font-black bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent mb-2">30-Day</div>
+              <div className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors">Money-back guarantee</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-green-600 mb-2">24/7</div>
-              <div className="text-gray-600">Support available</div>
+            <div className="group hover:scale-105 transition-transform duration-300">
+              <div className="text-4xl font-black bg-gradient-to-r from-green-600 to-emerald-600 bg-clip-text text-transparent mb-2">24/7</div>
+              <div className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors">Support available</div>
             </div>
-            <div>
-              <div className="text-3xl font-bold text-purple-600 mb-2">No Lock-in</div>
-              <div className="text-gray-600">Cancel anytime, hassle-free</div>
+            <div className="group hover:scale-105 transition-transform duration-300">
+              <div className="text-4xl font-black bg-gradient-to-r from-purple-600 to-pink-600 bg-clip-text text-transparent mb-2">No Lock-in</div>
+              <div className="text-gray-700 font-medium group-hover:text-gray-900 transition-colors">Cancel anytime, hassle-free</div>
             </div>
           </div>
         </div>
@@ -311,6 +330,26 @@ export default function SubscriptionPlansPage() {
             Contact Sales
           </button>
         </div>
+      </div>
+      
+      {/* Custom CSS for animations */}
+      <style jsx>{`
+        @keyframes blob {
+          0%, 100% { transform: translate(0, 0) scale(1); }
+          25% { transform: translate(20px, -50px) scale(1.1); }
+          50% { transform: translate(-20px, 20px) scale(0.9); }
+          75% { transform: translate(10px, 50px) scale(1.05); }
+        }
+        .animate-blob {
+          animation: blob 7s infinite;
+        }
+        .animation-delay-2000 {
+          animation-delay: 2s;
+        }
+        .animation-delay-4000 {
+          animation-delay: 4s;
+        }
+      `}</style>
       </div>
     </div>
   );
