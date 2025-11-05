@@ -22,6 +22,7 @@ import SignupPage from './pages/SignupPage';
 import ForgotPasswordPage from './pages/ForgotPasswordPage';
 import ResetPasswordPage from './pages/ResetPasswordPage';
 import LandingPage from './pages/LandingPage';
+import SubscriptionPlansPage from './pages/SubscriptionPlansPage';
 import { AuthProvider, useAuth } from './context/AuthContext';
 
 // Guest Portal Import
@@ -63,6 +64,8 @@ function AppRoutes() {
     <Routes>
       {/* Public Routes */}
       <Route path="/" element={<LandingPage />} />
+      <Route path="/pricing" element={<SubscriptionPlansPage />} />
+      <Route path="/plans" element={<SubscriptionPlansPage />} />
       <Route path="/login" element={!isAuthenticated ? <LoginPage /> : <Navigate to="/dashboard" replace />} />
       <Route path="/signup" element={!isAuthenticated ? <SignupPage /> : <Navigate to="/dashboard" replace />} />
       <Route path="/register" element={!isAuthenticated ? <SignupPage /> : <Navigate to="/dashboard" replace />} />
