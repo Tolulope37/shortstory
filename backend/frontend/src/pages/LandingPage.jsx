@@ -15,12 +15,12 @@ const LandingPage = () => {
             <a href="#features" className="text-gray-600 hover:text-gray-900 transition">Features</a>
             <a href="#how-it-works" className="text-gray-600 hover:text-gray-900 transition">How It Works</a>
             <a href="#testimonials" className="text-gray-600 hover:text-gray-900 transition">Testimonials</a>
-            <a href="#pricing" className="text-gray-600 hover:text-gray-900 transition">Pricing</a>
+            <Link to="/pricing" className="text-gray-600 hover:text-gray-900 transition">Pricing</Link>
           </nav>
           <div className="flex items-center space-x-4">
             <Link to="/login" className="text-gray-700 font-medium hover:text-black">Login</Link>
-            <Link to="/register" className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-black transition">
-              Get Started
+            <Link to="/pricing" className="bg-gray-900 text-white px-4 py-2 rounded-lg hover:bg-black transition">
+              View Plans
             </Link>
           </div>
         </div>
