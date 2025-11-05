@@ -190,10 +190,37 @@ export default function SubscriptionPlansPage() {
             {features.map((category, catIndex) => (
               <div key={catIndex}>
                 {/* Category Header */}
-                <div className="bg-gradient-to-r from-gray-50 to-white px-8 py-5 border-l-4 border-${category.color}-500">
+                <div className={`
+                  bg-gradient-to-r from-gray-50 to-white px-8 py-5 border-l-4
+                  ${category.color === 'blue' ? 'border-blue-500' : ''}
+                  ${category.color === 'green' ? 'border-green-500' : ''}
+                  ${category.color === 'yellow' ? 'border-yellow-500' : ''}
+                  ${category.color === 'purple' ? 'border-purple-500' : ''}
+                  ${category.color === 'indigo' ? 'border-indigo-500' : ''}
+                  ${category.color === 'pink' ? 'border-pink-500' : ''}
+                  ${category.color === 'teal' ? 'border-teal-500' : ''}
+                `}>
                   <div className="flex items-center space-x-3">
-                    <div className={`p-2 rounded-lg bg-${category.color}-100`}>
-                      <category.icon className={`h-5 w-5 text-${category.color}-600`} />
+                    <div className={`
+                      p-2 rounded-lg
+                      ${category.color === 'blue' ? 'bg-blue-100' : ''}
+                      ${category.color === 'green' ? 'bg-green-100' : ''}
+                      ${category.color === 'yellow' ? 'bg-yellow-100' : ''}
+                      ${category.color === 'purple' ? 'bg-purple-100' : ''}
+                      ${category.color === 'indigo' ? 'bg-indigo-100' : ''}
+                      ${category.color === 'pink' ? 'bg-pink-100' : ''}
+                      ${category.color === 'teal' ? 'bg-teal-100' : ''}
+                    `}>
+                      <category.icon className={`
+                        h-5 w-5
+                        ${category.color === 'blue' ? 'text-blue-600' : ''}
+                        ${category.color === 'green' ? 'text-green-600' : ''}
+                        ${category.color === 'yellow' ? 'text-yellow-600' : ''}
+                        ${category.color === 'purple' ? 'text-purple-600' : ''}
+                        ${category.color === 'indigo' ? 'text-indigo-600' : ''}
+                        ${category.color === 'pink' ? 'text-pink-600' : ''}
+                        ${category.color === 'teal' ? 'text-teal-600' : ''}
+                      `} />
                     </div>
                     <h4 className="text-xl font-bold text-gray-900">{category.category}</h4>
                   </div>
