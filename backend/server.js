@@ -13,6 +13,10 @@ const logger = require('./utils/logger');
 const authRoutes = require('./routes/auth');
 const propertyRoutes = require('./routes/properties');
 const bookingRoutes = require('./routes/bookings');
+const teamRoutes = require('./routes/team');
+const guestRoutes = require('./routes/guests');
+const maintenanceRoutes = require('./routes/maintenance');
+const communicationsRoutes = require('./routes/communications');
 
 // Initialize express
 const app = express();
@@ -104,6 +108,10 @@ app.get('/api/health', (req, res) => {
 app.use('/api/auth', authRoutes);
 app.use('/api/properties', propertyRoutes);
 app.use('/api/bookings', bookingRoutes);
+app.use('/api/team', teamRoutes);
+app.use('/api/guests', guestRoutes);
+app.use('/api/maintenance', maintenanceRoutes);
+app.use('/api/communications', communicationsRoutes);
 
 // Legacy compatibility routes (for existing frontend)
 app.get('/api/properties/:id/bookings', async (req, res) => {

@@ -7,6 +7,15 @@ const Guest = sequelize.define('Guest', {
     defaultValue: DataTypes.UUIDV4,
     primaryKey: true
   },
+  userId: {
+    type: DataTypes.UUID,
+    allowNull: false,
+    references: {
+      model: 'Users',
+      key: 'id'
+    },
+    comment: 'Property owner/manager'
+  },
   name: {
     type: DataTypes.STRING,
     allowNull: false
@@ -14,35 +23,33 @@ const Guest = sequelize.define('Guest', {
   email: {
     type: DataTypes.STRING,
     allowNull: false,
-    unique: true,
     validate: {
       isEmail: true
     }
   },
   phone: {
     type: DataTypes.STRING,
-    allowNull: false
+    allowNull: true
   },
-  address: {
-    type: DataTypes.TEXT,
+  nationality: {
+    type: DataTypes.STRING,
     allowNull: true
   },
   idType: {
     type: DataTypes.STRING,
-    allowNull: true,
-    comment: 'Type of ID: passport, drivers_license, national_id'
+    allowNull: true
   },
   idNumber: {
     type: DataTypes.STRING,
     allowNull: true
   },
-  dateOfBirth: {
-    type: DataTypes.DATEONLY,
+  address: {
+    type: DataTypes.TEXT,
     allowNull: true
   },
-  nationality: {
-    type: DataTypes.STRING,
-    defaultValue: 'Nigeria'
+  guestType: {
+    type: DataTypes.ENUM('new', 'regular', 'vip'),
+    defaultValue: 'new'
   },
   totalBookings: {
     type: DataTypes.INTEGER,
@@ -52,28 +59,29 @@ const Guest = sequelize.define('Guest', {
     type: DataTypes.DECIMAL(10, 2),
     defaultValue: 0
   },
-  loyaltyPoints: {
-    type: DataTypes.INTEGER,
-    defaultValue: 0
-  },
-  isBlacklisted: {
-    type: DataTypes.BOOLEAN,
-    defaultValue: false
-  },
-  blacklistReason: {
-    type: DataTypes.TEXT,
+  averageRating: {
+    type: DataTypes.DECIMAL(3, 2),
     allowNull: true
   },
   notes: {
     type: DataTypes.TEXT,
     allowNull: true
+  },
+  preferences: {
+    type: DataTypes.JSON,
+    allowNull: true
+  },
+  emergencyContact: {
+    type: DataTypes.JSON,
+    allowNull: true
+  },
+  status: {
+    type: DataTypes.ENUM('active', 'blacklisted', 'archived'),
+    defaultValue: 'active'
   }
 }, {
   timestamps: true,
-  indexes: [
-    { fields: ['email'] },
-    { fields: ['phone'] }
-  ]
+  tableName: 'Guests'
 });
 
 module.exports = Guest;
