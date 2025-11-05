@@ -114,62 +114,62 @@ export default function SubscriptionPlansPage() {
 
         {/* Comparison Table */}
         <div className="bg-white rounded-2xl shadow-xl overflow-hidden">
-          {/* Header Row */}
-          <div className="grid grid-cols-3 gap-8 p-8 bg-gradient-to-r from-gray-50 to-gray-100 border-b-4 border-gray-200">
-            <div className="text-left">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Features</h3>
-              <p className="text-sm text-gray-600">Compare what's included</p>
+          {/* Header Row with Plan Cards */}
+          <div className="grid grid-cols-3 gap-6 p-8 bg-gradient-to-r from-gray-50 to-gray-100 border-b-4 border-gray-200">
+            <div className="text-left flex flex-col justify-center">
+              <h3 className="text-3xl font-bold text-gray-900 mb-2">Features</h3>
+              <p className="text-gray-600">Compare what's included</p>
             </div>
             
             {/* Starter Plan Header */}
-            <div className="text-center bg-white rounded-xl shadow-md p-6 border-2 border-blue-200">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2">Starter</h3>
+            <div className="text-center bg-white rounded-xl shadow-lg p-8 border-2 border-blue-300 transform transition-all hover:scale-105">
+              <h3 className="text-3xl font-bold text-gray-900 mb-3">Starter</h3>
               <div className="mb-4">
-                <span className="text-4xl font-extrabold text-blue-600">
+                <span className="text-5xl font-extrabold text-blue-600">
                   £{calculatePrice(100, 1000)}
                 </span>
-                <span className="text-gray-600">
-                  /{billingCycle === 'monthly' ? 'month' : 'year'}
+                <span className="text-gray-600 text-lg">
+                  /{billingCycle === 'monthly' ? 'mo' : 'yr'}
                 </span>
               </div>
-              <p className="text-sm text-gray-600 mb-4">
+              <p className="text-sm text-gray-700 mb-6 leading-relaxed">
                 Perfect for independent hosts and small teams getting started.
               </p>
               <button
                 onClick={() => handleSelectPlan('starter')}
-                className="w-full py-3 px-6 rounded-lg font-semibold bg-blue-600 hover:bg-blue-700 text-white transition-all"
+                className="w-full py-3 px-6 rounded-lg font-bold text-lg bg-blue-600 hover:bg-blue-700 text-white transition-all shadow-md hover:shadow-lg"
               >
                 Get Started
               </button>
-              <p className="text-xs text-gray-500 mt-3 italic">
+              <p className="text-xs text-gray-500 mt-4 italic leading-relaxed">
                 Ideal if you manage a few short-lets and want automation without complexity.
               </p>
             </div>
 
             {/* Professional Plan Header */}
-            <div className="text-center bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl shadow-lg p-6 text-white relative">
-              <div className="absolute -top-3 right-4 bg-yellow-400 text-purple-900 px-3 py-1 rounded-full text-xs font-bold">
+            <div className="text-center bg-gradient-to-br from-purple-600 to-pink-600 rounded-xl shadow-2xl p-8 text-white relative transform transition-all hover:scale-105">
+              <div className="absolute -top-4 right-6 bg-yellow-400 text-purple-900 px-4 py-1.5 rounded-full text-xs font-bold shadow-lg">
                 ⭐ MOST POPULAR
               </div>
-              <h3 className="text-2xl font-bold mb-2">Professional</h3>
+              <h3 className="text-3xl font-bold mb-3">Professional</h3>
               <div className="mb-4">
-                <span className="text-4xl font-extrabold">
+                <span className="text-5xl font-extrabold">
                   £{calculatePrice(500, 5000)}
                 </span>
-                <span className="text-purple-100">
-                  /{billingCycle === 'monthly' ? 'month' : 'year'}
+                <span className="text-purple-100 text-lg">
+                  /{billingCycle === 'monthly' ? 'mo' : 'yr'}
                 </span>
               </div>
-              <p className="text-sm text-purple-100 mb-4">
+              <p className="text-sm text-purple-50 mb-6 leading-relaxed">
                 Built for property managers and high-volume operators who want automation, analytics, and control at scale.
               </p>
               <button
                 onClick={() => handleSelectPlan('professional')}
-                className="w-full py-3 px-6 rounded-lg font-semibold bg-white hover:bg-gray-100 text-purple-700 transition-all"
+                className="w-full py-3 px-6 rounded-lg font-bold text-lg bg-white hover:bg-gray-50 text-purple-700 transition-all shadow-md hover:shadow-lg"
               >
                 Get Started
               </button>
-              <p className="text-xs text-purple-100 mt-3 italic">
+              <p className="text-xs text-purple-100 mt-4 italic leading-relaxed">
                 Best for teams managing 10+ properties or 300+ monthly guests who want full automation, AI-driven pricing, and enterprise-level reporting.
               </p>
             </div>
