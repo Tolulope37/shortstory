@@ -8,70 +8,30 @@ export default function GuestDashboard() {
   const [upcomingBooking, setUpcomingBooking] = useState(null);
   const [isLoading, setIsLoading] = useState(true);
 
-  // Mock data fetch
+  // Fetch data from API
   useEffect(() => {
-    // In a real app, this would be an API call
-    setTimeout(() => {
-      setFeaturedProperties([
-        {
-          id: 1,
-          name: "Lekki Paradise Villa",
-          location: "Lekki Phase 1, Lagos",
-          rating: 4.8,
-          reviewCount: 42,
-          price: "₦65,000",
-          image: "https://placehold.co/600x400/3b82f6/ffffff?text=Lekki+Paradise",
-          isFavorite: true
-        },
-        {
-          id: 2,
-          name: "Ikeja GRA Apartment",
-          location: "Ikeja GRA, Lagos",
-          rating: 4.6,
-          reviewCount: 38,
-          price: "₦45,000",
-          image: "https://placehold.co/600x400/10b981/ffffff?text=Ikeja+Apartment",
-          isFavorite: false
-        },
-        {
-          id: 3,
-          name: "Victoria Island Luxury Suite",
-          location: "Victoria Island, Lagos",
-          rating: 4.9,
-          reviewCount: 56,
-          price: "₦85,000",
-          image: "https://placehold.co/600x400/f59e0b/ffffff?text=VI+Luxury+Suite",
-          isFavorite: true
-        },
-        {
-          id: 4,
-          name: "Abuja Executive Home",
-          location: "Maitama, Abuja",
-          rating: 4.7,
-          reviewCount: 32,
-          price: "₦75,000",
-          image: "https://placehold.co/600x400/ec4899/ffffff?text=Abuja+Executive",
-          isFavorite: false
-        },
-      ]);
-
-      setUpcomingBooking({
-        id: 1,
-        propertyName: "Lekki Paradise Villa",
-        propertyImage: "https://placehold.co/600x400/3b82f6/ffffff?text=Lekki+Paradise",
-        checkIn: "2025-04-24",
-        checkOut: "2025-04-28",
-        status: "Confirmed",
-        totalPaid: "₦260,000",
-        host: {
-          name: "Oluwaseun Adeyemi",
-          responseRate: 98,
-          responseTime: "within an hour"
-        }
-      });
-
-      setIsLoading(false);
-    }, 800);
+    const fetchData = async () => {
+      try {
+        setIsLoading(true);
+        // TODO: Replace with actual API calls when guest portal backend is ready
+        // const propertiesResponse = await api.get('/guest/properties/featured');
+        // const bookingsResponse = await api.get('/guest/bookings/upcoming');
+        // setFeaturedProperties(propertiesResponse.data || []);
+        // setUpcomingBooking(bookingsResponse.data);
+        
+        // For now, show empty state
+        setFeaturedProperties([]);
+        setUpcomingBooking(null);
+      } catch (error) {
+        console.error('Error fetching guest dashboard data:', error);
+        setFeaturedProperties([]);
+        setUpcomingBooking(null);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+    
+    fetchData();
   }, []);
 
   const toggleFavorite = (propertyId) => {

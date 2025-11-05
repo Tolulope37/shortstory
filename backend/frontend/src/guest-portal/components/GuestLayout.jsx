@@ -7,13 +7,14 @@ export default function GuestLayout({ children }) {
   const location = useLocation();
   const navigate = useNavigate();
   
-  // Mock user data - in a real app this would come from context/API
+  // Get user data from context/API
+  // TODO: Replace with actual user context when guest portal backend is ready
   const guestUser = {
-    name: 'Adeola Johnson',
-    email: 'adeola.johnson@example.com',
-    avatar: null, // URL would go here
-    loyaltyPoints: 450,
-    loyaltyTier: 'Gold'
+    name: 'Guest',
+    email: 'guest@example.com',
+    avatar: null,
+    loyaltyPoints: 0,
+    loyaltyTier: 'Bronze'
   };
   
   // Get the current active page based on the URL path

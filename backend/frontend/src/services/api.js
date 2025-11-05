@@ -215,272 +215,116 @@ const guestService = {
   }
 };
 
-// Add a new communicationService for guest messaging
-
+// Communication service for guest messaging
 const communicationService = {
   // Get all messages for a guest
   getGuestMessages: async (guestId) => {
-    // In a real implementation, this would call your backend API
-    // For now, we'll return mock data
-    
-    // Simulate network delay
-    await new Promise(resolve => setTimeout(resolve, 800));
-    
-    const mockMessages = [
-      {
-        id: 1,
-        guestId: guestId,
-        sender: 'host',
-        content: 'Hi there! Welcome to our ShortStories property. Let me know if you have any questions.',
-        timestamp: '2025-05-01T14:30:00',
-        read: true,
-        type: 'text'
-      },
-      {
-        id: 2,
-        guestId: guestId,
-        sender: 'guest',
-        content: 'Thanks for the welcome! What time is check-in?',
-        timestamp: '2025-05-01T14:45:00',
-        read: true,
-        type: 'text'
-      },
-      {
-        id: 3,
-        guestId: guestId,
-        sender: 'host',
-        content: 'Check-in is at 3 PM. I\'ve sent you the welcome pack with all details.',
-        timestamp: '2025-05-01T15:00:00',
-        read: true,
-        type: 'text'
-      },
-      {
-        id: 4, 
-        guestId: guestId,
-        sender: 'host',
-        content: 'Welcome Pack.pdf',
-        timestamp: '2025-05-01T15:01:00',
-        read: true,
-        type: 'file',
-        fileType: 'pdf',
-        fileSize: '2.4 MB'
-      }
-    ];
-    
-    return mockMessages;
+    try {
+      const response = await api.get(`/communications/messages/${guestId}`);
+      return response.data || [];
+    } catch (error) {
+      console.error(`Error fetching messages for guest ${guestId}:`, error);
+      throw error;
+    }
   },
   
   // Send a message to a guest
   sendMessage: async (guestId, message) => {
-    // In a real implementation, this would call your backend API
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    return {
-      id: Date.now(),
-      guestId: guestId,
-      sender: 'host',
-      content: message.content,
-      timestamp: new Date().toISOString(),
-      read: false,
-      type: message.type || 'text',
-      ...(message.type === 'file' && { 
-        fileType: message.fileType,
-        fileSize: message.fileSize
-      })
-    };
+    try {
+      const response = await api.post(`/communications/messages/${guestId}`, message);
+      return response.data;
+    } catch (error) {
+      console.error('Error sending message:', error);
+      throw error;
+    }
   },
   
   // Get templates for quick responses
   getMessageTemplates: async () => {
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    return [
-      {
-        id: 1,
-        title: 'Welcome Message',
-        content: 'Hello and welcome to our property! We\'re excited to host you. Please let me know if you need anything to make your stay more comfortable.'
-      },
-      {
-        id: 2,
-        title: 'Check-in Instructions',
-        content: 'Your check-in is scheduled for tomorrow at 3 PM. The keypad code is 1234. Please text me when you arrive and I\'ll guide you through the process.'
-      },
-      {
-        id: 3,
-        title: 'Check-out Reminder',
-        content: 'Just a friendly reminder that check-out is at 11 AM tomorrow. Please leave the keys on the table and lock the door behind you. We hope you enjoyed your stay!'
-      },
-      {
-        id: 4,
-        title: 'WiFi Information',
-        content: 'Here\'s the WiFi information:\nNetwork: ShortStories_Guest\nPassword: welcome2023'
-      },
-      {
-        id: 5,
-        title: 'Local Recommendations',
-        content: 'Looking for things to do nearby? I recommend checking out the local market (10 min walk) and the beach (15 min drive). Let me know if you\'d like more specific recommendations!'
-      }
-    ];
+    try {
+      const response = await api.get('/communications/templates');
+      return response.data || [];
+    } catch (error) {
+      console.error('Error fetching message templates:', error);
+      throw error;
+    }
   },
   
   // Get welcome pack templates
   getWelcomePacks: async () => {
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    return [
-      {
-        id: 1,
-        title: 'Standard Welcome Pack',
-        description: 'Basic information about the property, check-in/out procedures, and local amenities.',
-        fileSize: '1.2 MB',
-        fileType: 'pdf'
-      },
-      {
-        id: 2,
-        title: 'Premium Welcome Pack',
-        description: 'Comprehensive guide with detailed local recommendations, restaurant discounts, and special amenities.',
-        fileSize: '3.5 MB',
-        fileType: 'pdf'
-      },
-      {
-        id: 3,
-        title: 'Business Traveler Pack',
-        description: 'Information focused on work amenities, business centers, and efficient transportation options.',
-        fileSize: '1.8 MB',
-        fileType: 'pdf'
-      }
-    ];
+    try {
+      const response = await api.get('/communications/welcome-packs');
+      return response.data || [];
+    } catch (error) {
+      console.error('Error fetching welcome packs:', error);
+      throw error;
+    }
   },
   
   // Get check-in templates
   getCheckInPacks: async () => {
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    return [
-      {
-        id: 1,
-        title: 'Standard Check-in Package',
-        description: 'Basic check-in information, WiFi codes, and house rules.',
-        fileSize: '0.8 MB',
-        fileType: 'pdf'
-      },
-      {
-        id: 2,
-        title: 'Detailed Check-in Guide',
-        description: 'Comprehensive instructions with photos for accessing the property and using amenities.',
-        fileSize: '2.5 MB',
-        fileType: 'pdf'
-      },
-      {
-        id: 3,
-        title: 'Digital Key Access',
-        description: 'Instructions for using the digital key system and backup entry methods.',
-        fileSize: '1.0 MB',
-        fileType: 'pdf'
-      }
-    ];
+    try {
+      const response = await api.get('/communications/check-in-packs');
+      return response.data || [];
+    } catch (error) {
+      console.error('Error fetching check-in packs:', error);
+      throw error;
+    }
   },
   
   // Process a guest check-in
   processCheckIn: async (guestId, checkInData) => {
-    // In a real implementation, this would update the backend with check-in details
-    await new Promise(resolve => setTimeout(resolve, 600));
-    
-    return {
-      success: true,
-      checkInTime: new Date().toISOString(),
-      message: 'Guest successfully checked in'
-    };
+    try {
+      const response = await api.post(`/communications/check-in/${guestId}`, checkInData);
+      return response.data;
+    } catch (error) {
+      console.error('Error processing check-in:', error);
+      throw error;
+    }
   },
   
   // Send automated messages based on guest status
   sendAutomatedMessage: async (guestId, messageType) => {
-    // In a real implementation, this would send an automated message from the system
-    await new Promise(resolve => setTimeout(resolve, 400));
-    
-    const messageTemplates = {
-      welcome: 'Welcome to our property! We\'re excited to host you.',
-      'pre-arrival': 'Your stay is coming up soon! Here\'s some information to prepare for your visit.',
-      'check-in': 'Today\'s your check-in day! Here\'s everything you need to know.',
-      'during-stay': 'We hope you\'re enjoying your stay! Let us know if you need anything.',
-      'check-out': 'Check-out is tomorrow. Here\'s what you need to know before departing.'
-    };
-    
-    return {
-      id: Date.now(),
-      guestId: guestId,
-      sender: 'host',
-      content: messageTemplates[messageType] || 'Automated message',
-      timestamp: new Date().toISOString(),
-      read: false,
-      type: 'text',
-    };
+    try {
+      const response = await api.post(`/communications/automated-message/${guestId}`, { messageType });
+      return response.data;
+    } catch (error) {
+      console.error('Error sending automated message:', error);
+      throw error;
+    }
   },
   
   // Get message automation trigger settings
   getMessageAutomations: async () => {
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    // Mock data for automation triggers
-    return [
-      {
-        id: 1,
-        name: 'Welcome Pack',
-        trigger: 'payment_confirmed',
-        enabled: true,
-        messageType: 'welcome_pack',
-        templateId: 1,
-        delay: 0, // Send immediately
-        delayUnit: 'hours',
-        delayPosition: 'after',
-        description: 'Send welcome pack after payment is confirmed'
-      },
-      {
-        id: 2,
-        name: 'Check-in Instructions',
-        trigger: 'one_day_before_arrival',
-        enabled: true,
-        messageType: 'text',
-        templateId: 2,
-        delay: 24,
-        delayUnit: 'hours',
-        delayPosition: 'before',
-        description: 'Send check-in instructions one day before arrival'
-      },
-      {
-        id: 3,
-        name: 'Checkout Reminder',
-        trigger: 'one_day_before_departure',
-        enabled: true,
-        messageType: 'text',
-        templateId: 3,
-        delay: 2,
-        delayUnit: 'hours',
-        delayPosition: 'before',
-        description: 'Send checkout information one day before departure'
-      }
-    ];
+    try {
+      const response = await api.get('/communications/automations');
+      return response.data || [];
+    } catch (error) {
+      console.error('Error fetching message automations:', error);
+      throw error;
+    }
   },
   
   // Save or update a message automation trigger
   saveMessageAutomation: async (automation) => {
-    // In a real implementation, this would update the backend
-    await new Promise(resolve => setTimeout(resolve, 500));
-    
-    return {
-      ...automation,
-      id: automation.id || Date.now()
-    };
+    try {
+      const response = await api.post('/communications/automations', automation);
+      return response.data;
+    } catch (error) {
+      console.error('Error saving message automation:', error);
+      throw error;
+    }
   },
   
   // Delete a message automation trigger
   deleteMessageAutomation: async (id) => {
-    await new Promise(resolve => setTimeout(resolve, 300));
-    
-    return {
-      success: true,
-      message: 'Automation trigger deleted successfully'
-    };
+    try {
+      const response = await api.delete(`/communications/automations/${id}`);
+      return response.data;
+    } catch (error) {
+      console.error('Error deleting message automation:', error);
+      throw error;
+    }
   }
 };
 
@@ -540,18 +384,8 @@ const teamService = {
   // Get available roles
   getRoles: async () => {
     try {
-      // Simulate network delay
-      await new Promise(resolve => setTimeout(resolve, 300));
-      
-      return [
-        { id: 1, name: 'Property Manager', permissions: ['manage_properties', 'manage_bookings', 'manage_team', 'manage_guests'] },
-        { id: 2, name: 'Assistant Manager', permissions: ['manage_properties', 'manage_bookings', 'manage_guests'] },
-        { id: 3, name: 'Cleaner', permissions: ['view_properties'] },
-        { id: 4, name: 'Maintenance', permissions: ['view_properties'] },
-        { id: 5, name: 'Guest Concierge', permissions: ['view_properties', 'message_guests'] },
-        { id: 6, name: 'Security', permissions: ['view_properties'] },
-        { id: 7, name: 'Custom Role', permissions: [] }
-      ];
+      const response = await api.get('/team/roles');
+      return response.data || [];
     } catch (error) {
       console.error('Error fetching roles:', error);
       throw error;
