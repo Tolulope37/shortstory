@@ -879,10 +879,11 @@ export default function GuestsPage() {
                   onChange={handleAddGuestChange}
                 >
                   <option value="">-- Select a property --</option>
-                  <option value="Lekki Paradise Villa">Lekki Paradise Villa</option>
-                  <option value="Ikeja GRA Apartment">Ikeja GRA Apartment</option>
-                  <option value="Victoria Island Luxury Suite">Victoria Island Luxury Suite</option>
-                  <option value="Abuja Executive Home">Abuja Executive Home</option>
+                  {properties.map(property => (
+                    <option key={property.id} value={property.id}>
+                      {property.name}
+                    </option>
+                  ))}
                 </select>
               </div>
               
