@@ -87,19 +87,37 @@ const LocationsPage = () => {
                 <Search className="h-5 w-5 text-gray-400" />
               </div>
             </div>
-            <div className="relative">
+            <div style={{ position: 'relative', display: 'inline-flex', alignItems: 'center' }}>
               <select
-                className="appearance-none px-4 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500 pr-8"
+                style={{
+                  appearance: 'none',
+                  padding: '12px 40px 12px 40px',
+                  border: '1px solid #ddd',
+                  borderRadius: '8px',
+                  fontSize: '14px',
+                  lineHeight: '1.5',
+                  height: '42px',
+                  backgroundColor: 'white',
+                  cursor: 'pointer',
+                  outline: 'none'
+                }}
                 value={filterStatus}
                 onChange={(e) => setFilterStatus(e.target.value)}
+                onFocus={(e) => e.target.style.borderColor = '#6366f1'}
+                onBlur={(e) => e.target.style.borderColor = '#ddd'}
               >
                 <option value="all">All Status</option>
                 <option value="Active">Active</option>
                 <option value="Maintenance">Maintenance</option>
                 <option value="Inactive">Inactive</option>
               </select>
-              <div className="absolute inset-y-0 right-0 flex items-center pr-2 pointer-events-none">
-                <Filter className="h-4 w-4 text-gray-400" />
+              <div style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', display: 'flex', alignItems: 'center' }}>
+                <Filter style={{ width: '16px', height: '16px', color: '#999' }} />
+              </div>
+              <div style={{ position: 'absolute', right: '14px', top: '50%', transform: 'translateY(-50%)', pointerEvents: 'none', display: 'flex', alignItems: 'center' }}>
+                <svg width="12" height="8" viewBox="0 0 12 8" fill="none" xmlns="http://www.w3.org/2000/svg">
+                  <path d="M1 1.5L6 6.5L11 1.5" stroke="#999" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                </svg>
               </div>
             </div>
           </div>
