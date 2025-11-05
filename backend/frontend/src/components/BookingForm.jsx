@@ -49,15 +49,9 @@ const BookingForm = ({ propertyId, properties, onSubmit, onCancel, initialValues
         setProperty(response);
         setLoading(false);
       } catch (apiError) {
-        console.error('API error, using mock data:', apiError);
-        // Fallback to mock data if API call fails
-        setProperty({
-          id: id,
-          name: "Beach Villa",
-          price: 65000,
-          location: "Lekki Phase 1, Lagos",
-          image: "beach-villa.jpg"
-        });
+        console.error('API error:', apiError);
+        setError("Property not found");
+        setProperty(null);
         setLoading(false);
       }
     } catch (err) {

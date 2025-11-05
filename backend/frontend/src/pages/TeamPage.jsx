@@ -597,13 +597,10 @@ const MemberForm = ({ member, onSubmit, onCancel }) => {
         const roles = await teamService.getRoles();
         setAvailableRoles(roles);
         
-        // Mock properties data for now
-        setAvailableProperties([
-          'Lekki Paradise Villa',
-          'Victoria Island Luxury Suite',
-          'Ikeja GRA Apartment',
-          'Abuja Executive Home'
-        ]);
+        // Fetch available properties from API
+        const propertiesResponse = await propertyService.getAll();
+        const propertyNames = (propertiesResponse.properties || []).map(p => p.name);
+        setAvailableProperties(propertyNames);
       } catch (error) {
         console.error('Error fetching form data:', error);
       } finally {
@@ -951,13 +948,10 @@ const TaskForm = ({ task, teamMembers, onSubmit, onCancel }) => {
     const fetchData = async () => {
       try {
         setLoading(true);
-        // Mock properties data for now
-        setAvailableProperties([
-          'Lekki Paradise Villa',
-          'Victoria Island Luxury Suite',
-          'Ikeja GRA Apartment',
-          'Abuja Executive Home'
-        ]);
+        // Fetch available properties from API
+        const propertiesResponse = await propertyService.getAll();
+        const propertyNames = (propertiesResponse.properties || []).map(p => p.name);
+        setAvailableProperties(propertyNames);
       } catch (error) {
         console.error('Error fetching form data:', error);
       } finally {
