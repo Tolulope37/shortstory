@@ -93,13 +93,18 @@ export default function GuestsPage() {
   const fetchGuests = async () => {
     try {
       setLoading(true);
-      const data = await guestService.getAll();
-      setGuests(data || []);
+      const [guestsData, propertiesData] = await Promise.all([
+        guestService.getAll(),
+        propertyService.getAll()
+      ]);
+      setGuests(guestsData || []);
+      setProperties(propertiesData.properties || []);
       setError(null);
     } catch (err) {
-      console.error('Failed to fetch guests:', err);
+      console.error('Failed to fetch data:', err);
       // Don't show error - just show empty state for new users
       setGuests([]);
+      setProperties([]);
       setError(null);
     } finally {
       setLoading(false);
