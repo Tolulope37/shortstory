@@ -119,59 +119,59 @@ export default function SubscriptionPlansPage() {
         </div>
 
         {/* Comparison Table */}
-        <div className="bg-white/90 backdrop-blur-sm rounded-2xl shadow-xl overflow-hidden border border-gray-200 max-w-5xl mx-auto">
+        <div className="bg-white/90 backdrop-blur-sm rounded-xl shadow-lg overflow-hidden border border-gray-200 max-w-4xl mx-auto">
           {/* Header Row with Plan Cards */}
-          <div className="grid grid-cols-2 gap-6 p-6 bg-gradient-to-r from-gray-50 via-white to-gray-50 border-b-2 border-gray-200">
+          <div className="grid grid-cols-2 gap-4 p-4 bg-gradient-to-r from-gray-50 via-white to-gray-50 border-b border-gray-200">
             
             {/* Starter Plan Header */}
-            <div className="text-center bg-gradient-to-br from-white to-blue-50 rounded-xl shadow-lg p-6 border-2 border-blue-300 transform transition-all duration-300 hover:scale-105 hover:shadow-xl group">
-              <h3 className="text-2xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Starter</h3>
-              <div className="mb-3">
-                <span className="text-4xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
+            <div className="text-center bg-gradient-to-br from-white to-blue-50 rounded-lg shadow-md p-4 border border-blue-200 transform transition-all duration-300 hover:scale-105 hover:shadow-lg group">
+              <h3 className="text-xl font-bold text-gray-900 mb-2 group-hover:text-blue-600 transition-colors">Starter</h3>
+              <div className="mb-2">
+                <span className="text-3xl font-bold bg-gradient-to-r from-blue-600 to-blue-700 bg-clip-text text-transparent">
                   £{calculatePrice(100, 1000)}
                 </span>
-                <span className="text-gray-600 text-base">
+                <span className="text-gray-600 text-sm">
                   /{billingCycle === 'monthly' ? 'mo' : 'yr'}
                 </span>
               </div>
-              <p className="text-sm text-gray-700 mb-4">
+              <p className="text-sm text-gray-600 mb-3">
                 Perfect for independent hosts and small teams getting started.
               </p>
               <button
                 onClick={() => handleSelectPlan('starter')}
-                className="w-full py-3 px-4 rounded-lg font-semibold bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 shadow-md hover:shadow-lg"
+                className="w-full py-2 px-4 rounded-lg font-semibold text-sm bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 Get Started →
               </button>
-              <p className="text-xs text-gray-500 mt-3 italic">
+              <p className="text-xs text-gray-500 mt-2 italic">
                 Ideal if you manage a few short-lets and want automation without complexity.
               </p>
             </div>
 
             {/* Professional Plan Header */}
-            <div className="text-center bg-gradient-to-br from-purple-600 via-purple-700 to-pink-600 rounded-xl shadow-lg p-6 text-white relative transform transition-all duration-300 hover:scale-105 hover:shadow-xl group border-2 border-purple-400">
-              <div className="absolute -top-3 right-4 bg-gradient-to-r from-yellow-400 to-orange-400 text-purple-900 px-4 py-1 rounded-full text-xs font-bold shadow-lg">
+            <div className="text-center bg-gradient-to-br from-purple-600 via-purple-700 to-pink-600 rounded-lg shadow-md p-4 text-white relative transform transition-all duration-300 hover:scale-105 hover:shadow-lg group border border-purple-400">
+              <div className="absolute -top-2 right-3 bg-gradient-to-r from-yellow-400 to-orange-400 text-purple-900 px-3 py-0.5 rounded-full text-xs font-bold shadow-md">
                 ⭐ MOST POPULAR
               </div>
-              <h3 className="text-2xl font-bold mb-2">Professional</h3>
-              <div className="mb-3">
-                <span className="text-4xl font-bold text-white">
+              <h3 className="text-xl font-bold mb-2">Professional</h3>
+              <div className="mb-2">
+                <span className="text-3xl font-bold text-white">
                   £{calculatePrice(500, 5000)}
                 </span>
-                <span className="text-purple-100 text-base">
+                <span className="text-purple-100 text-sm">
                   /{billingCycle === 'monthly' ? 'mo' : 'yr'}
                 </span>
               </div>
-              <p className="text-sm text-purple-50 mb-4">
+              <p className="text-sm text-purple-50 mb-3">
                 Built for property managers and high-volume operators who want automation, analytics, and control at scale.
               </p>
               <button
                 onClick={() => handleSelectPlan('professional')}
-                className="w-full py-3 px-4 rounded-lg font-semibold bg-white hover:bg-gray-50 text-purple-700 transition-all duration-300 shadow-md hover:shadow-lg"
+                className="w-full py-2 px-4 rounded-lg font-semibold text-sm bg-white hover:bg-gray-50 text-purple-700 transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 Get Started →
               </button>
-              <p className="text-xs text-purple-100 mt-3 italic">
+              <p className="text-xs text-purple-100 mt-2 italic">
                 Best for teams managing 10+ properties or 300+ monthly guests who want full automation, AI-driven pricing, and enterprise-level reporting.
               </p>
             </div>
@@ -257,11 +257,11 @@ export default function SubscriptionPlansPage() {
           </div>
 
           {/* Bottom CTA */}
-          <div className="grid grid-cols-2 gap-6 p-6 bg-gradient-to-r from-gray-50 via-white to-gray-50 border-t-2 border-gray-200">
+          <div className="grid grid-cols-2 gap-4 p-4 bg-gradient-to-r from-gray-50 via-white to-gray-50 border-t border-gray-200">
             <div className="text-center">
               <button
                 onClick={() => handleSelectPlan('starter')}
-                className="w-full py-3 px-4 rounded-lg font-semibold bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 shadow-md hover:shadow-lg"
+                className="w-full py-2 px-4 rounded-lg font-semibold text-sm bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 Start with Starter →
               </button>
@@ -269,7 +269,7 @@ export default function SubscriptionPlansPage() {
             <div className="text-center">
               <button
                 onClick={() => handleSelectPlan('professional')}
-                className="w-full py-3 px-4 rounded-lg font-semibold bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-all duration-300 shadow-md hover:shadow-lg"
+                className="w-full py-2 px-4 rounded-lg font-semibold text-sm bg-gradient-to-r from-purple-600 to-pink-600 hover:from-purple-700 hover:to-pink-700 text-white transition-all duration-300 shadow-sm hover:shadow-md"
               >
                 Start with Professional →
               </button>
