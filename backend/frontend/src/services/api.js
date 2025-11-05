@@ -598,11 +598,9 @@ const maintenanceService = {
         { id: 'cleaning', name: 'Cleaning' },
         { id: 'repair', name: 'Repair' },
         { id: 'inspection', name: 'Inspection' },
-        { id: 'other', name: 'Other' },
-      { id: 'hvac', name: 'HVAC' },
-      { id: 'exterior', name: 'Exterior' },
-      { id: 'other', name: 'Other' }
-    ];
+        { id: 'other', name: 'Other' }
+      ];
+    }
   }
 };
 
